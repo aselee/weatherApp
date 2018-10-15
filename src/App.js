@@ -34,7 +34,8 @@ class WeatherApp extends React.Component {
     // if (city === true && country === true) {}
 
     if ( city && country ) {
-      console.log(data);
+      // console.log(data);
+      
       this.setState({
         temperature: data.main.temp,
         city: data.name,
