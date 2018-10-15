@@ -1,7 +1,9 @@
 import React from 'react';
-import Titles from './components/Titles'
-import Form from './components/Form'
-import Weather from './components/Weather'
+import Titles from './components/Titles';
+import Form from './components/SForm';
+import Weather from './components/SWeather';
+// import Form from './components/CForm'
+// import Weather from './components/CWeather'
 
 
 const API_KEY="16e9cba97fb8af6f31f4a41263633ce8";
@@ -35,7 +37,7 @@ class WeatherApp extends React.Component {
 
     if ( city && country ) {
       // console.log(data);
-      
+
       this.setState({
         temperature: data.main.temp,
         city: data.name,
@@ -60,19 +62,32 @@ class WeatherApp extends React.Component {
   render() {
     return (
       <div>
-        <Titles />
-        <Form getWeather={this.getWeather} />
-        <Weather 
-          temperature={this.state.temperature}
-          city={this.state.city}
-          country={this.state.country}
-          humidity={this.state.humidity}
-          description={this.state.description}
-          error={this.state.error}
-        />
+        <div className="wrapper">
+          <div className="main">
+            <div className="container">
+              <div className="row">
+                <div className="col-xs-5 title-container">
+                  <Titles />
+                </div>
+                <div className="col-xs-7 form-container">
+                  <Form getWeather={this.getWeather} />
+                  <Weather 
+                    temperature={this.state.temperature}
+                    city={this.state.city}
+                    country={this.state.country}
+                    humidity={this.state.humidity}
+                    description={this.state.description}
+                    error={this.state.error}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
-}
+};
 
 export default WeatherApp;
+
